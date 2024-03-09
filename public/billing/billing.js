@@ -13,7 +13,7 @@ import {
 import {getFunctions, httpsCallable} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-functions.js";
 // https://firebase.google.com/docs/web/setup#available-libraries
 const firebaseConfig = {
-  apiKey: "AIzaSyCKqvYg-2DRnsn5phvpujXl4anpo0Gqud4",
+  apiKey: "your key",
   authDomain: "pta-webapp.firebaseapp.com",
   databaseURL: "https://pta-webapp-default-rtdb.firebaseio.com",
   projectId: "pta-webapp",
