@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="menu2.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Parent Teacher Association</h1>
+    </header>
+    <div class="wrapper">
+      <nav>
+        <a href="../menu2/menu2.html">Home</a>
+        <a href="../fundraise2/viewFundraiser.html">Fundraise</a>
+        <a id="billing" href="../billing/billing.html">Billing</a>
+        <a href="../calendar/Calendar_v1.html">Calendar</a>
+        <a href="../profile2/profile2.html">Profile</a>
+        <a id="register" href="../register/register.html">Register</a>
+        <a id="manageAccount" href="../manageAccount/viewAccount.html"
+          >Manage Accounts</a
+        >
+        <div class="logout-container">
+          <input
+            type="button"
+            value="logout"
+            class="btn"
+            onclick="logout()"
+            id="logo"
+          />
+        </div>
+      </nav>
+      <main>
+        <!-- Display announcements -->
+        <div id="announcement_table"></div>
+      </main>
+
+      <aside class="right_sidebar">
+        <div id="posting">
+          <a href="postAnnouncement.html"> Post an Announcement</a>
+          <br />
+          <a href="viewOwnAnnouncement.html"> View created Announcement</a>
+        </div>
+      </aside>
+    </div>
+
+    <script type="module">
+      import {
+        setUser,
+        getUser,
+        setAnnouncementTable,
+        listAnnouncement,
+      } from "./viewAnnouncement.js";
+
+      let user_id = localStorage.getItem("uid");
+      await setUser(user_id);
+      let user = getUser();
+
+      setAnnouncementTable("announcement_table");
+      listAnnouncement();
+      var htmlElementId;
+      if (user.type !== "Admin") {
+        var htmlElementId = document.getElementById("register");
+        htmlElementId.style.display = "none";
+        var htmlElementId = document.getElementById("manageAccount");
+        htmlElementId.style.display = "none";
+      }
+
+      if (user.type !== "Teacher") {
+        htmlElementId = document.getElementById("posting"); // element's id === "register"
+        htmlElementId.style.display = "none"; // hide the element
+        htmlElementId = document.getElementById("fundraise");
+        htmlElementId.style.display = "none";
+      }
+
+      if (user.type == "Teacher") {
+        htmlElementId = document.getElementById("billing");
+        htmlElementId.style.display = "none";
+      }
+    </script>
+    <script src="./viewAnnouncement.js" type="module"></script>
+  </body>
+</html>

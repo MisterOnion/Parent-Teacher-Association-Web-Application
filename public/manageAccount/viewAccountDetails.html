@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>view Account Details</title>
+    <link rel="stylesheet" href="viewAccount.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Parent Teacher Association</h1>
+    </header>
+    <div class="wrapper">
+        <nav>
+            <a href="../menu2/menu2.html">Home</a>
+            <a href="../fundraise2/viewFundraiser.html">Fundraising</a>
+            <a href="../billing/billing.html">Billing</a>
+            <a href="../calendar/Calendar_v1.html">Calendar</a>
+            <a href="../profile2/profile2.html">Profile</a>
+            <a id="register" href="../register/register.html">Register</a>
+            <a id="manageAccount" href="../manageAccount/viewAccount.html">Manage Accounts</a>
+
+            <div class="logout-container">
+                <input type="button" value="logout" class="btn" onclick="logout()" id="logo" />
+            </div>
+        </nav>
+
+        <div class="account-detail">
+            <p>Name: <span id="name"></span></p>
+            <p>PTA Email: <span id="PTAemail"></span></p>
+            <p>Email: <span id="email"></span></p>
+            <p id="spouses_label">Spouses: <span id="spouses"></span></p>
+            <p id="children_label">Children: <span id="children"></span></p>
+            <button id="deleteAccBtn">Delete Account</button>
+        </div>
+        <aside>
+            <br>
+            <a href="viewAccount.html">Back</a>
+        </aside>
+    </div>
+    
+</body>
+
+<script src="../hideNavBar.js" type="module"></script>
+
+<script type="module">
+    import {
+        getUser, setDeleteAccBtn, setAccId, setAdmin, setUserAcc
+    } from "./viewAccountDetails.js";
+
+    // get user id from cache
+    let user_id = localStorage.getItem("uid");
+    let admin = await getUser(user_id);
+
+    // get selected user's id from cache
+    let acc_uid = localStorage.getItem("acc_uid");
+    //localStorage.removeItem("acc_uid");
+
+    let userAcc = await getUser(acc_uid);
+
+
+    setAccId(acc_uid);
+    setUserAcc(userAcc);
+    setAdmin(admin);
+    setDeleteAccBtn("deleteAccBtn");
+
+    let htmlElementId = document.getElementById("name");
+    htmlElementId.innerHTML = userAcc.name;
+
+    htmlElementId = document.getElementById("PTAemail");
+    htmlElementId.innerHTML = userAcc.PTAEmail;
+
+    htmlElementId = document.getElementById("email");
+    htmlElementId.innerHTML = userAcc.email;
+
+    if (userAcc.type === "Parent") {
+        htmlElementId = document.getElementById("children");
+        htmlElementId.innerHTML = userAcc.children;
+        htmlElementId = document.getElementById("spouses");
+        htmlElementId.innerHTML = userAcc.spouses;
+    }
+    else {
+        htmlElementId = document.getElementById("spouses_label");
+        htmlElementId.style.display = "none";
+        htmlElementId = document.getElementById("children_label");
+        htmlElementId.style.display = "none";
+    }
+</script>
+
+<script src="./viewAccount.js" type="module"></script>
+</html>

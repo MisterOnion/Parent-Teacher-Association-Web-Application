@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="billing.css" />
+
+    <title>Billing</title>
+  </head>
+  <body>
+    <header>
+      <h1>Parent Teacher Association</h1>
+    </header>
+    <div class="wrapper">
+      <nav>
+        <a href="../menu2/menu2.html">Home</a>
+        <a href="../fundraise2/viewFundraiser.html">Fundraise</a>
+        <a id="billing" href="../billing/billing.html">Billing</a>
+        <a href="../calendar/Calendar_v1.html">Calendar</a>
+        <a href="../profile2/profile2.html">Profile</a>
+        <a id="register" href="../register/register.html">Register</a>
+        <a id="manageAccount" href="../manageAccount/viewAccount.html"
+          >Manage Accounts</a
+        >
+        <div class="logout-container">
+          <input
+            type="button"
+            value="logout"
+            class="btn"
+            onclick="logout()"
+            id="logo"
+          />
+        </div>
+      </nav>
+      <main>
+        <section>
+          <h2>Billing Posts</h2>
+          <div id="billing-posts"></div>
+        </section>
+      </main>
+      <aside class="right_sidebar">
+        <br />
+        <div>
+          <form id="billing-form">
+            <a href="./invoice/invoice.html">View invoice here</a>
+            <br />
+            <br />
+            <input type="date" id="date" placeholder="Enter date" />
+            <br />
+            <input type="text" id="content" placeholder="Enter content" />
+            <br />
+            <input
+              type="number"
+              min="1"
+              id="pay-amount"
+              placeholder="Enter amount"
+            />
+            <br />
+            <button id="create-button">Create Post</button>
+            <br />
+            <button id="delete-button">Delete Selected Post</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+    <script type="module">
+      import { setUser, getUser } from "./billing.js";
+
+      let user_id = localStorage.getItem("uid");
+      await setUser(user_id);
+      let user = getUser();
+      var htmlElementId;
+      if (user.type !== "Admin") {
+        htmlElementId = document.getElementById("register");
+        htmlElementId.style.display = "none";
+        htmlElementId = document.getElementById("manageAccount");
+        htmlElementId.style.display = "none";
+        htmlElementId = document.getElementById("billing-form");
+        htmlElementId.style.display = "none";
+      }
+
+      // if (user.type !== "Parent") {
+      //   htmlElementId = document.getElementById("billing");
+      //   htmlElementId.style.display = "none";
+      // }
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="billing.js" type="module"></script>
+  </body>
+</html>

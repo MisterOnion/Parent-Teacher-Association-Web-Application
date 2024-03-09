@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="profile2.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Parent Teacher Association</h1>
+    </header>
+    <div class="wrapper">
+      <nav>
+        <a href="../menu2/menu2.html">Home</a>
+        <a href="../fundraise2/viewFundraiser.html">Fundraise</a>
+        <a id="billing" href="../billing/billing.html">Billing</a>
+        <a href="../calendar/Calendar_v1.html">Calendar</a>
+        <a href="../profile2/profile2.html">Profile</a>
+        <a id="register" href="../register/register.html">Register</a>
+        <a id="manageAccount" href="../manageAccount/viewAccount.html"
+          >Manage Accounts</a
+        >
+
+        <div class="logout-container">
+          <input
+            type="button"
+            value="logout"
+            class="btn"
+            onclick="logout()"
+            id="logo"
+          />
+        </div>
+      </nav>
+
+      <div class="profile-detail">
+        <p>Name: <span id="name"></span></p>
+        <p>PTA Email: <span id="PTAemail"></span></p>
+        <p>Email: <span id="email"></span></p>
+        <p>Phone Number: <span id="phoneNum"></span></p>
+        <p id="spouses_label">Spouses: <span id="spouses"></span></p>
+        <p id="children_label">Children: <span id="children"></span></p>
+        <br />
+        <p><a href="profileSettings2.html"> Change Profile Settings</a></p>
+      </div>
+      <aside class="right_sidebar">
+        <br />
+        <br />
+        <section class="picture-container">
+          <div>
+            <img id="img" />
+          </div>
+          <br />
+          <div>
+            <i class="image icon"></i>
+            <input type="file" id="fileUploader" />
+          </div>
+          <button onclick="updatePic()">Update Profile Picture</button>
+        </section>
+      </aside>
+    </div>
+
+    <script type="module">
+      import { getUser, setUser } from "./profile2.js";
+
+      // get user id from cache
+      let user_id = localStorage.getItem("uid");
+
+      let user = await getUser(user_id);
+      console.log(user);
+
+      var htmlElementId;
+      htmlElementId = document.getElementById("name"); //CHANGE THIS IF WANT DIFFERENT SECTION OF PAGE
+      htmlElementId.innerHTML = user.name;
+
+      htmlElementId = document.getElementById("PTAemail"); //CHANGE THIS IF WANT DIFFERENT SECTION OF PAGE
+      htmlElementId.innerHTML = user.PTAEmail;
+
+      htmlElementId = document.getElementById("email"); //CHANGE THIS IF WANT DIFFERENT SECTION OF PAGE
+      htmlElementId.innerHTML = user.email;
+
+      htmlElementId = document.getElementById("phoneNum");
+      htmlElementId.innerHTML = user.phoneNum;
+
+      if (user.type === "Parent") {
+        htmlElementId = document.getElementById("children"); //CHANGE THIS IF WANT DIFFERENT SECTION OF PAGE
+        htmlElementId.innerHTML = user.children;
+        htmlElementId = document.getElementById("spouses"); //CHANGE THIS IF WANT DIFFERENT SECTION OF PAGE
+        htmlElementId.innerHTML = user.spouses;
+      } else {
+        htmlElementId = document.getElementById("spouses_label"); //CHANGE THIS IF WANT DIFFERENT SECTION OF PAGE
+        htmlElementId.style.display = "none";
+        htmlElementId = document.getElementById("children_label"); //CHANGE THIS IF WANT DIFFERENT SECTION OF PAGE
+        htmlElementId.style.display = "none";
+      }
+
+      if (user.type !== "Admin") {
+        htmlElementId = document.getElementById("register");
+        htmlElementId.style.display = "none";
+        htmlElementId = document.getElementById("manageAccount");
+        htmlElementId.style.display = "none";
+      }
+
+      if (user.type == "Teacher") {
+        htmlElementId = document.getElementById("billing");
+        htmlElementId.style.display = "none";
+      }
+    </script>
+    <!-- for log out -->
+    <script src="./profile2.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.0/firebase-storage.js"></script>
+    <script src="./profileImg.js" ></script>
+  </body>
+</html>

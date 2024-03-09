@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="menu.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Parent Teacher Association</h1>
+    </header>
+    <div class="wrapper"> 
+      <nav>
+        <a href="../menu/menu.html">Home</a>
+        <a href="../fundraise/fundraise.html">Fundraising</a>
+        <a href="../billing/billing.html">Billing</a>
+        <a href="../calendar/Calendar_v1.html">Calendar</a>
+        <a href="../profile/profile.html">Profile</a>
+        <a href="../menu2/menu2.html">Menu 2</a>
+        <a href="../profile2/profile2.html">Profile 2</a>
+
+        <div class="logout-container">
+          <input
+            type="button"
+            value="logout"
+            class="btn"
+            onclick="logout()"
+            id="logo"
+          />
+        </div>
+      </nav>
+
+      <main>
+        <!-- Display announcements -->
+        <ul id="list"></ul>
+      </main>
+
+      <aside class="right_sidebar">
+        <section class="announcement-container">
+          <div id="announcementForm">
+            <div id="adminContent">
+              <h2>Post an announcement</h2>
+              <!-- <h4>Select Catagory</h4>
+              <select id="announcementCategory">
+                <option value="general">General</option>
+                <option value="events">Events</option>
+                <option value="fundraise">Fundraise</option>
+              </select> -->
+              <h4>Enter ID:</h4>
+              <input id="enterID" type="text" />
+
+              <h4>Enter Teacher's Name:</h4>
+              <input id="enterTeacherName" type="text" />
+
+              <h4>Announcement Content:</h4>
+              <textarea id="enterAnnouncement" type="text" rows="4"></textarea>
+
+              <br /><br />
+              <button id="insertBtn">Submit Announcement</button>
+              <button id="updateBtn">Update Announcement</button>
+              <button id="removeBtn">Remove Announcement</button>
+            </div>
+          </div>
+
+          <div id="showAnnouncement">
+            <h1>Find Announcement</h1>
+            <h4>ID</h4>
+            <input id="findID" type="text" /> <br /><br />
+            <button id="findBtn">Find Announcement</button>
+
+            <h3 id="findAnnouncement" type="text"></h3>
+            <h3 id="findName" type="text"></h3>
+            <br /><br />
+          </div>
+        </section>
+      </aside>
+      <!-- Add announcements form -->
+    </div>
+    <script src="menu.js" type="module"></script>
+  </body>
+</html>

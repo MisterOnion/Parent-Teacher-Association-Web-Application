@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="profile2.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Parent Teacher Association</h1>
+    </header>
+    <div class="wrapper">
+      <nav>
+        <a href="../menu2/menu2.html">Home</a>
+        <a href="../fundraise2/viewFundraiser.html">Fundraise</a>
+        <a id="billing" href="../billing/billing.html">Billing</a>
+        <a href="../calendar/Calendar_v1.html">Calendar</a>
+        <a href="../profile2/profile2.html">Profile</a>
+        <a id="register" href="../register/register.html">Register</a>
+        <a id="manageAccount" href="../manageAccount/viewAccount.html"
+          >Manage Accounts</a
+        >
+        <div class="logout-container">
+          <input
+            type="button"
+            value="logout"
+            class="btn"
+            onclick="logout()"
+            id="logo"
+          />
+        </div>
+      </nav>
+
+      <table>
+        <tr>
+          <td><label for="email">Secondary Email: </label></td>
+          <td><input id="email" type="text" /></td>
+        </tr>
+        <tr>
+          <td><label for="phoneNum">Phone number: </label></td>
+          <td><input id="phoneNum" type="text" /></td>
+        </tr>
+        <tr>
+          <td><label for="passw">Password: </label></td>
+          <td><input id="passw" type="text" /></td>
+        </tr>
+        <tr>
+          <td id="spouses_label">Spouses: <span id="spouses"></span></td>
+        </tr>
+        <tr>
+          <td><input id="addSpouse" type="text" /></td>
+          <td>
+            <button id="addSpouseBtn">Add Spouse</button>
+            <button id="RemoveSpouseBtn">Remove Spouse</button>
+          </td>
+        </tr>
+        <tr>
+          <td id="children_label">Children: <span id="children"></span></td>
+        </tr>
+        <tr>
+          <td><input id="addChildren" type="text" /></td>
+          <td>
+            <button id="addChildrenBtn">Add Children</button>
+            <button id="RemoveChildrenBtn">Remove Children</button>
+          </td>
+        </tr>
+      </table>
+
+      <aside class="right_sidebar">
+        <div>
+          <button id="updateBtn">Update Account</button>
+          <a href="profile2.html">Cancel</a>
+        </div>
+      </aside>
+    </div>
+
+    <script type="module">
+      import {
+        setUpdateBtnId,
+        setAddChildrenBtn,
+        setRemoveChildrenBtn,
+        setAddSpouseBtn,
+        setRemoveSpouseBtn,
+        setEmail_inputId,
+        setPhoneNum_inputId,
+        setPassw_inputId,
+        setSpouses_inputId,
+        setChildren_inputId,
+        insertDefaultUserDataToInput,
+        setSpouses_display,
+        setChildren_display,
+        hideSpouseChildrenInput,
+        setSpouses_label,
+        setChildren_label,
+        setUser,
+        getUser,
+      } from "./profileSettings2.js";
+
+      // get user id from cache
+      let user_id = localStorage.getItem("uid");
+      let user = await getUser(user_id);
+
+      // map html text input to js variables
+      setEmail_inputId("email");
+      setPhoneNum_inputId("phoneNum");
+      setPassw_inputId("passw");
+      setSpouses_inputId("addSpouse");
+      setChildren_inputId("addChildren");
+
+      //map html label to js variables
+      setSpouses_label("spouses_label");
+      setChildren_label("children_label");
+
+      //map html children parent display to js variables
+      setSpouses_display("spouses");
+      setChildren_display("children");
+
+      // map html buttons to js functions
+      setUpdateBtnId("updateBtn", user_id);
+      setAddSpouseBtn("addSpouseBtn");
+      setRemoveSpouseBtn("RemoveSpouseBtn");
+      setAddChildrenBtn("addChildrenBtn");
+      setRemoveChildrenBtn("RemoveChildrenBtn");
+
+      hideSpouseChildrenInput(user_id);
+
+      insertDefaultUserDataToInput(user_id);
+
+      var htmlElementId;
+
+      if (user.type !== "Admin") {
+        htmlElementId = document.getElementById("register");
+        htmlElementId.style.display = "none";
+        htmlElementId = document.getElementById("manageAccount");
+        htmlElementId.style.display = "none";
+      }
+
+      if (user.type == "Teacher") {
+        htmlElementId = document.getElementById("billing");
+        htmlElementId.style.display = "none";
+      } else {
+        htmlElementId = document.getElementById("billing");
+        htmlElementId.style.display = "block";
+      }
+    </script>
+    <!-- for log out -->
+    <script src="./profile2.js" type="module"></script>
+  </body>
+</html>
