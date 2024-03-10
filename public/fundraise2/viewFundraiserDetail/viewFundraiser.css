@@ -1,0 +1,180 @@
+body {
+	font-family: "Arial", sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4; 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+header {
+	background-color: #333; 
+	color: #fff;
+	padding: 10px; 
+	text-align: center;
+	width: 100%;
+	top: 0;
+	z-index: 1;
+}
+
+
+.wrapper {
+	display: flex;
+	width: 100%;
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: #3498db; /* Blue navigation bar */
+	padding: 20px;
+	position: sticky;
+	top: 0;
+	height: 95vh;
+	overflow-y: auto;
+	z-index: 100;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	margin-bottom: 15px;
+	padding: 10px;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+	background-color: #555; /* Darker blue on hover */
+}
+
+.logout-container {
+	margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.logout-container input {
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+
+.logout-container input:hover {
+	background-color: #555;
+}
+
+main {
+	display: flex;
+	flex-direction: column; /* Change to row to align items horizontally */
+	justify-content: right; /* Add space between items */
+	align-items: flex-start; /* Align items at the top */
+	padding: 20px;
+	max-width: 60%;
+	width: 90%;
+	box-sizing: border-box;
+    
+}
+section {
+	padding: 20px;
+	max-width: 60%;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+button:hover {
+	background-color: #555;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+label {
+	margin-bottom: 10px;
+}
+
+#img{
+	width: 170%;
+	margin-left: -217px;
+	margin-top: -40px;
+}
+
+.announcement-container {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff; 
+	padding: 20px; 
+	border-radius: 10px; 
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+	margin-top: 20px;
+}
+.announcement-container button {  
+	background-color: #c834db; 
+	color: #fff; 
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s ease; 
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.announcement-container button:last-child {
+	margin-right: 0; /* Remove right margin for the last button */
+}
+
+
+.announcement-container button:hover {
+	background-color: #2bc91d; /* Darker blue on hover */
+}
+
+.announcement-box{
+	background-color: #ecf0f1; /* Light grey background for each box */
+	border: 1px solid #bdc3c7; /* Border color */
+	border-radius: 5px;
+	padding: 15px;
+	margin-bottom: 15px; /* Vertical spacing between announcement boxes */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+
+.right_sidebar {
+	max-width: 30%; /* Adjust the width of the sidebar */
+	padding: 6;
+	box-sizing: border-box;
+}
+
+textarea {
+	width: 200px;  /* Adjust this to change the width */
+	height:80px;  /* Adjust this to change the height */
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+
+
+
+
+
+

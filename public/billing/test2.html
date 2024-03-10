@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Create Billing Post</h2>
+
+    <input type="date" id="date" placeholder="Enter date" />
+    <input type="text" id="content" placeholder="Enter content" />
+    <input type="number" min="1" id="pay-amount" placeholder="Enter amount" />
+    <button id="create-button">Create Post</button>
+    <button id="delete-button">Delete Selected Post</button>
+
+    <h2>Billing Posts</h2>
+    <div id="billing-posts"></div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script src="test2.js" type="module"></script>
+  </body>
+</html>

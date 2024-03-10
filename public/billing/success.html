@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer and Redirect Example</title>
+  </head>
+  <body>
+    <div>
+      <h1>Payment Successful</h1>
+      <p>Redirecting in <span id="timer">10</span> seconds...</p>
+      <p>All invoices are displayed in the billing page</p>
+      <p>
+        <a href="billing.html" id="redirectLink"
+          >Click here if not redirected</a
+        >
+      </p>
+    </div>
+
+    <script>
+      // Set the initial countdown value
+      let countdown = 10;
+
+      // Function to update the timer display and perform redirection
+      function updateTimer() {
+        // Update the timer display
+        document.getElementById("timer").textContent = countdown;
+
+        // If countdown reaches 0, redirect to the target page
+        if (countdown === 0) {
+          window.location.href = "billing.html";
+        } else {
+          // Decrement countdown and call the function again after 1 second
+          countdown--;
+          setTimeout(updateTimer, 1000);
+        }
+      }
+
+      // Call function to start the timer
+      updateTimer();
+
+      // Allow users to click the link to navigate to the target page manually
+      document
+        .getElementById("redirectLink")
+        .addEventListener("click", function () {
+          window.location.href = "billing.html";
+        });
+    </script>
+  </body>
+</html>
