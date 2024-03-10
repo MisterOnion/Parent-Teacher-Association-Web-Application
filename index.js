@@ -1,3 +1,5 @@
+// Functions API from Firebase needs to be initialized before this code can be executed. (this js file must be placed inside the functions folder)
+
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp();
