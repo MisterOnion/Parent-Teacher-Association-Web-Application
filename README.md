@@ -15,6 +15,6 @@ For anyone intending to emulate any aspect of this project, it is important to s
 2. Set up a Stripe developer account with the necessary tokens. https://www.youtube.com/@elilopezdev/videos offers a series of clear steps. (< 40 minutes)
 
 *IMPORTANT*
-Adapting the design to your specific goals will require more time on your end. This project will have some kinks to iron out, which will be rectified in future projects. 
+Adapting the design to your specific goals will require more time on your end. This project will have some kinks to iron out, which will be remembered in future projects. 
 
 
