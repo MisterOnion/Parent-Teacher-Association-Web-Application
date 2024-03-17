@@ -18,3 +18,13 @@ For anyone intending to emulate any aspect of this project, it is important to s
 Adapting the design to your specific goals will require more time on your end. This project will have some kinks to iron out, which will be remembered in future projects. 
 
 
+![image](https://github.com/MisterOnion/Parent-Teacher-Association-Web-Application/assets/99007152/19daccb8-1b5e-43ad-93ce-d8154b8d7ab5)
+
+
+![image](https://github.com/MisterOnion/Parent-Teacher-Association-Web-Application/assets/99007152/f4b38f26-c6f9-442a-8380-ea91770bc727)
+
+
+![image](https://github.com/MisterOnion/Parent-Teacher-Association-Web-Application/assets/99007152/4c0fd1d1-27c6-4fc0-9e6f-fe7255a10e80)
+
+
+![image](https://github.com/MisterOnion/Parent-Teacher-Association-Web-Application/assets/99007152/2e3743dd-d31b-4ddb-9dff-443f91782114)
